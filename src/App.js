@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Header from "./components/Header";
 import axios from "axios";
+import List from "./components/List";
 
 export default class App extends React.Component {
   // déclaration et export du composant
@@ -15,15 +16,11 @@ export default class App extends React.Component {
     const response = await axios.get(
       "http://short-url-server-mq.herokuapp.com/"
     );
-    //permet de vérifier rapidement que le composant est bien appelé
-    //console.log("DidMount has been called from ", this.constructor.name);
+
     this.setState({
       isLoading: false, // le chargement a été fait
       address: response.data
     });
-    {
-      console.log("hello", response.data);
-    }
   }
 
   // Gestion des événenemts :
@@ -47,6 +44,7 @@ export default class App extends React.Component {
     return (
       <div className="app-container">
         <Header />
+        <List address={this.state.address} />
       </div>
     );
   }

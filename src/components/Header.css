@@ -1,0 +1,5 @@
+.header-container {
+  width: 100%;
+  background-color: var(--dark-purple);
+  min-height: 30vh;
+}

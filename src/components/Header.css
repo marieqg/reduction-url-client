@@ -1,5 +1,14 @@
-.header-container {
+.header-main-container {
   width: 100%;
   background-color: var(--dark-purple);
   min-height: 30vh;
+}
+
+.header-second-container {
+  padding: 30px 30px 30px 80px;
+}
+
+.header-second-container-title {
+  color: #ffffff;
+  font-size: 30px;
 }

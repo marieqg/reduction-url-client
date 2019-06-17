@@ -1,8 +1,7 @@
 import React from "react";
-import "./App.css";
-import Header from "./components/Header";
+import "./Header.css";
 
-export default class App extends React.Component {
+export default class Header extends React.Component {
   // déclaration et export du composant
   // state propre au composant
   state = {
@@ -35,10 +34,6 @@ export default class App extends React.Component {
     }
 
     // ce que l'on veut render avant le chargement
-    return (
-      <div className="app-container">
-        <Header />
-      </div>
-    );
+    return <div className="header-container">Hello</div>;
   }
 }

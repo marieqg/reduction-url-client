@@ -48,32 +48,34 @@ export default class List extends React.Component {
             <span className="list-container-header-title">Short URL</span>
           </div>
 
-          <div className="list-container-header-part2">
-            <span className="list-container-header-title">Visits</span>
-          </div>
+          <span className="list-container-header-title-visit">Visits</span>
         </div>
 
         {tabOfaddress.map(oneAddress => {
           return (
             <div className="list-container-list" key={oneAddress._id}>
-              <span className="list-container-list-items">
-                {oneAddress.longUrl}
-              </span>
+              <div className="list-container-list-part1">
+                <a
+                  href={oneAddress.longUrl}
+                  className="list-container-list-items"
+                >
+                  {oneAddress.longUrl}
+                </a>
 
-              <a
-                className="list-container-list-items"
-                href={oneAddress.longUrl}
-                onClickCapture={() => {
-                  this.handleClick(oneAddress._id);
-                }}
-                onContextMenu={() => {
-                  this.handleClick(oneAddress._id);
-                }}
-              >
-                {oneAddress.shortUrl}
-              </a>
-
-              <span className="list-container-list-items">
+                <a
+                  className="list-container-list-items"
+                  href={oneAddress.longUrl}
+                  onClickCapture={() => {
+                    this.handleClick(oneAddress._id);
+                  }}
+                  onContextMenu={() => {
+                    this.handleClick(oneAddress._id);
+                  }}
+                >
+                  {oneAddress.shortUrl}
+                </a>
+              </div>
+              <span className="list-container-list-items-visit">
                 {oneAddress.counter}
               </span>
             </div>

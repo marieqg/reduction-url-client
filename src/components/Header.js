@@ -32,6 +32,7 @@ export default class Header extends React.Component {
       await axios.post("http://short-url-server-mq.herokuapp.com/create", {
         url: this.state.url
       });
+      this.props.displayData();
       alert(`Vous avez bien réduit l'URL  ${this.state.url}`);
       this.setState({
         url: ""

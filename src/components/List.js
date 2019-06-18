@@ -42,12 +42,26 @@ export default class List extends React.Component {
     // ce que l'on veut render aprés le chargement
     return (
       <div className="list-container">
+        <div className="list-container-header">
+          <div className="list-container-header-part1">
+            <span className="list-container-header-title">Original URL</span>
+            <span className="list-container-header-title">Short URL</span>
+          </div>
+
+          <div className="list-container-header-part2">
+            <span className="list-container-header-title">Visits</span>
+          </div>
+        </div>
+
         {tabOfaddress.map(oneAddress => {
           return (
-            <div key={oneAddress._id}>
-              <span>{oneAddress.longUrl}</span>
+            <div className="list-container-list" key={oneAddress._id}>
+              <span className="list-container-list-items">
+                {oneAddress.longUrl}
+              </span>
 
               <a
+                className="list-container-list-items"
                 href={oneAddress.longUrl}
                 onClickCapture={() => {
                   this.handleClick(oneAddress._id);
@@ -59,7 +73,9 @@ export default class List extends React.Component {
                 {oneAddress.shortUrl}
               </a>
 
-              <span>{oneAddress.counter}</span>
+              <span className="list-container-list-items">
+                {oneAddress.counter}
+              </span>
             </div>
           );
         })}

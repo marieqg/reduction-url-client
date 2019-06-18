@@ -1,42 +1,19 @@
 import React from "react";
-import axios from "axios";
-import List from "./components/List";
-import Header from "./components/Header";
-import "./App.css";
+import HomePage from "./components/Homepage";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class App extends React.Component {
   // déclaration et export du composant
   // state propre au composant
   state = {
-    isLoading: true, // gestion du chargement
-    address: [],
-    page: "welcome"
+    isLoading: true // gestion du chargement
   };
 
   async componentDidMount() {
-    const response = await axios.get(
-      "http://short-url-server-mq.herokuapp.com/"
-    );
     this.setState({
-      isLoading: false, // le chargement a été fait
-      address: response.data
+      isLoading: false // le chargement a été fait
     });
-    if (this.state.address > 0) {
-      this.setState({
-        page: "result"
-      });
-    }
   }
-
-  // Gestion des événenemts :
-  displayData = () => {
-    this.setState({ page: "result" });
-  };
-
-  // Autres méthodes du composant :
-  /* doSomething = () => {
-  faire quelquechose d'autre
-} */
 
   render() {
     if (this.state.isLoading) {
@@ -48,10 +25,10 @@ export default class App extends React.Component {
     // ce que l'on veut render avant le chargement
     return (
       <div className="app-container">
-        {(this.state.page === "welcome" || this.state.page === "result") && (
-          <Header displayData={this.displayData} />
-        )}
-        {<List address={this.state.address} />}
+        {/* <HomePage /> */}
+        <Router>
+          <Route exact path="/" component={HomePage} />
+        </Router>
       </div>
     );
   }

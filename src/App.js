@@ -1,36 +1,34 @@
 import React from "react";
-import axios from "axios";
-import List from "./components/List";
-import Header from "./components/Header";
 import "./App.css";
+import Header from "./components/Header";
+import axios from "axios";
 
 export default class App extends React.Component {
   // déclaration et export du composant
   // state propre au composant
   state = {
     isLoading: true, // gestion du chargement
-    address: [],
-    page: "welcome"
+    address: []
   };
 
   async componentDidMount() {
     const response = await axios.get(
       "http://short-url-server-mq.herokuapp.com/"
     );
+    //permet de vérifier rapidement que le composant est bien appelé
+    //console.log("DidMount has been called from ", this.constructor.name);
     this.setState({
       isLoading: false, // le chargement a été fait
       address: response.data
     });
-    if (this.state.address > 0) {
-      this.setState({
-        page: "result"
-      });
+    {
+      console.log("hello", response.data);
     }
   }
 
   // Gestion des événenemts :
-  displayData = () => {
-    this.setState({ page: "result" });
+  handleSubmit = () => {
+    /* faire quelquechose*/
   };
 
   // Autres méthodes du composant :
@@ -48,10 +46,7 @@ export default class App extends React.Component {
     // ce que l'on veut render avant le chargement
     return (
       <div className="app-container">
-        {(this.state.page === "welcome" || this.state.page === "result") && (
-          <Header displayData={this.displayData} />
-        )}
-        {<List address={this.state.address} />}
+        <Header />
       </div>
     );
   }

@@ -66,14 +66,20 @@ export default class Header extends React.Component {
         <div className="header-second-container">
           <h1 className="header-second-container-title">Simplify your links</h1>
           <form onSubmit={this.handleSubmit}>
-            <input
-              placeholder="Your orginal URL here"
-              type="url"
-              value={this.state.url}
-              required={true}
-              onChange={this.handleChange}
-            />
-            <button type="submit">SHORTEN URL </button>
+            {" "}
+            <div className="header-second-container-form">
+              <input
+                className="header-second-container-input"
+                placeholder="Your orginal URL here"
+                type="url"
+                value={this.state.url}
+                required={true}
+                onChange={this.handleChange}
+              />
+              <button className="header-second-container-button" type="submit">
+                SHORTEN URL
+              </button>
+            </div>
           </form>
         </div>
       </div>

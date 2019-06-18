@@ -22,10 +22,10 @@ export default class List extends React.Component {
       this.setState({ error: null });
     }
     try {
-      await axios.post("https://short-url-server-mq.herokuapp.com/update", {
+      await axios.post("http://short-url-server-mq.herokuapp.com/update", {
         id: urlId
       });
-      axios.get("https://short-url-server-mq.herokuapp.com/").then(response => {
+      axios.get("http://short-url-server-mq.herokuapp.com/").then(response => {
         this.setState({
           address: response.data
         });

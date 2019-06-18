@@ -29,7 +29,7 @@ export default class Header extends React.Component {
       this.setState({ error: null });
     }
     try {
-      await axios.post("https://short-url-server-mq.herokuapp.com/create", {
+      await axios.post("http://short-url-server-mq.herokuapp.com/create", {
         url: this.state.url
       });
       this.props.displayData(); // permet de faire apparaitre la liste avec un changement de state dans la homepage

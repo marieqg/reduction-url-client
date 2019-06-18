@@ -15,7 +15,7 @@ export default class Homepage extends React.Component {
 
   async componentDidMount() {
     const response = await axios.get(
-      "https://short-url-server-mq.herokuapp.com/"
+      "http://short-url-server-mq.herokuapp.com/"
     );
     this.setState({
       isLoading: false, // le chargement a été fait
@@ -31,7 +31,7 @@ export default class Homepage extends React.Component {
   // Gestion des événenemts :
   displayData = async () => {
     const response = await axios.get(
-      "https://short-url-server-mq.herokuapp.com/"
+      "http://short-url-server-mq.herokuapp.com/"
     );
     this.setState({
       isLoading: false, // le chargement a été fait

@@ -22,8 +22,13 @@ export default class List extends React.Component {
       this.setState({ error: null });
     }
     try {
-      await axios.post("http://short-url-server-mq.herokuapp.com/update", {
+      await axios.post("https://short-url-server-mq.herokuapp.com/update", {
         id: urlId
+      });
+      axios.get("https://short-url-server-mq.herokuapp.com/").then(response => {
+        this.setState({
+          address: response.data
+        });
       });
     } catch (error) {
       this.setState({ error: error });
@@ -81,6 +86,13 @@ export default class List extends React.Component {
             </div>
           );
         })}
+        {/* PARTIE D'ERREUR S'IL Y EN A UNE  */}
+        {this.state.error && (
+          <div>
+            <h2>Error</h2>
+            {this.state.error.response.data.error}
+          </div>
+        )}
       </div>
     );
   }

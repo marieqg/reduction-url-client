@@ -13,20 +13,18 @@ export default class Redirect extends React.Component {
 
   async componentDidMount() {
     const { keyUrlParams } = this.props.match.params;
-    try {
-      await axios.get(
-        `http://short-url-server-mq.herokuapp.com/${keyUrlParams}`
-      );
-      this.setState({
-        redirection: true,
-        isLoading: false,
-        keyUrl: keyUrlParams
+    await axios
+      .get(`https://short-url-server-mq.herokuapp.com/${keyUrlParams}`)
+      .then(response => {
+        console.log("response", response.data);
+      })
+      .catch(error => {
+        console.log(error);
       });
-    } catch (error) {
-      alert("l'URL demandée n'est pas valide, merci de recommencer");
-    }
-    await axios.then(response => {
-      console.log("response", response.data);
+    this.setState({
+      redirection: true,
+      isLoading: false,
+      keyUrl: keyUrlParams
     });
   }
 
@@ -43,7 +41,7 @@ export default class Redirect extends React.Component {
               this.state.keyUrl
             }`)
           : (window.location =
-              "https://short-url-marie-quittelier.herokuapp.com/")}
+              "http://short-url-marie-quittelier.herokuapp.com/")}
       </div>
     );
   }

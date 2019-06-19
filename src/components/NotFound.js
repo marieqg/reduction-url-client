@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import axios from "axios";
+import List from "./List";
+import Header from "./Header";
+import HomePage from "./Homepage";
+import "./Homepage.css";
 
-import HomePage from "./components/Homepage";
-import Redirect from "./components/Redirect";
-import Redirect from "./components/NotFound";
-
-export default class App extends React.Component {
+export default class NotFound extends React.Component {
   // déclaration et export du composant
   // state propre au composant
   state = {
@@ -22,19 +22,15 @@ export default class App extends React.Component {
     if (this.state.isLoading) {
       //console.log("loading");
       // ce que l'on veut render avant le chargement
+      alert(`L'URL renseignée est invalide, essayez de nouveau :) `);
+
       return null;
     }
 
     // ce que l'on veut render avant le chargement
     return (
       <div className="app-container">
-        {/* <HomePage /> */}
-        <Router>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/error" component={NotFound} />
-
-          <Route path="/:keyUrlParams" component={Redirect} />
-        </Router>
+        <HomePage />
       </div>
     );
   }

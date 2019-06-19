@@ -32,7 +32,7 @@ export default class List extends React.Component {
 
           <span className="list-container-header-title-visit">Visits</span>
         </div>
-        ){/* Affichage de la liste des URLs connues en base de donnée  */}
+        {/* Affichage de la liste des URLs connues en base de donnée  */}
         {tabOfaddress.map(oneAddress => {
           return (
             <div className="list-container-list" key={oneAddress._id}>

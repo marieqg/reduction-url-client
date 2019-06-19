@@ -15,7 +15,7 @@ export default class Redirect extends React.Component {
     const { keyUrlParams } = this.props.match.params;
     try {
       await axios.get(
-        `https://short-url-server-mq.herokuapp.com/${keyUrlParams}`
+        `http://short-url-server-mq.herokuapp.com/${keyUrlParams}`
       );
       this.setState({
         redirection: true,
@@ -39,7 +39,7 @@ export default class Redirect extends React.Component {
     return (
       <div>
         {this.state.keyUrl && this.state.keyUrl
-          ? (window.location = `https://short-url-server-mq.herokuapp.com/${
+          ? (window.location = `http://short-url-server-mq.herokuapp.com/${
               this.state.keyUrl
             }`)
           : (window.location =

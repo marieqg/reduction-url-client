@@ -38,7 +38,6 @@ export default class Header extends React.Component {
         url: ""
       });
     } catch (error) {
-      this.setState({ error: error });
       alert("L'URL a déjà été utilisée ");
     }
   };

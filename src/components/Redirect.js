@@ -39,11 +39,11 @@ export default class Redirect extends React.Component {
     return (
       <div>
         {this.state.keyUrl && this.state.keyUrl
-          ? (window.location = `http://short-url-server-mq.herokuapp.com/${
+          ? (window.location = `https://short-url-server-mq.herokuapp.com/${
               this.state.keyUrl
             }`)
           : (window.location =
-              "http://short-url-marie-quittelier.herokuapp.com/")}
+              "https://short-url-marie-quittelier.herokuapp.com/")}
       </div>
     );
   }

@@ -12,10 +12,9 @@ export default class Redirect extends React.Component {
   };
 
   async componentDidMount() {
-    const { fromUrlKey } = this.props.match.params;
-
+    const { keyUrlParams } = this.props.match.params;
     await axios
-      .get("https://short-url-server-mq.herokuapp.com/roBMb")
+      .get(`https://short-url-server-mq.herokuapp.com/${keyUrlParams}`)
       .then(response => {
         console.log("response", response.data);
       })
@@ -24,9 +23,9 @@ export default class Redirect extends React.Component {
       });
     this.setState({
       redirection: true,
-      isLoading: false
+      isLoading: false,
+      keyUrl: keyUrlParams
     });
-    console.log(this.props.match);
   }
 
   // Gestion des événenemts :
@@ -40,9 +39,6 @@ export default class Redirect extends React.Component {
 } */
 
   render() {
-    const urlToRedirect = `http://short-url-server-mq.herokuapp.com/roBMb
-    `;
-    console.log(urlToRedirect);
     if (this.state.isLoading) {
       // ce que l'on veut render avant le chargement
       return null;
@@ -50,8 +46,10 @@ export default class Redirect extends React.Component {
     // ce que l'on veut render avant le chargement
     return (
       <div>
-        {this.state.redirection
-          ? (window.location = urlToRedirect)
+        {this.state.keyUrl && this.state.keyUrl
+          ? (window.location = `https://short-url-server-mq.herokuapp.com/${
+              this.state.keyUrl
+            }`)
           : (window.location =
               "http://short-url-marie-quittelier.herokuapp.com/")}
       </div>

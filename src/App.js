@@ -30,7 +30,7 @@ export default class App extends React.Component {
         {/* <HomePage /> */}
         <Router>
           <Route exact path="/" component={HomePage} />
-          <Route path="/:keyUrl" component={Redirect} />
+          <Route path="/:keyUrlParams" component={Redirect} />
         </Router>
       </div>
     );

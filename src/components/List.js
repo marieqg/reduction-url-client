@@ -48,8 +48,8 @@ export default class List extends React.Component {
       <div className="list-container">
         <div className="list-container-header">
           <div className="list-container-header-part1">
-            <span className="list-container-header-title">Original URL</span>
-            <span className="list-container-header-title">Short URL</span>
+            <span className="list-container-header-title1">Original URL</span>
+            <span className="list-container-header-title2">Short URL</span>
           </div>
 
           <span className="list-container-header-title-visit">Visits</span>
@@ -61,13 +61,13 @@ export default class List extends React.Component {
               <div className="list-container-list-part1">
                 <a
                   href={oneAddress.longUrl}
-                  className="list-container-list-items"
+                  className="list-container-list-items1"
                 >
                   {oneAddress.longUrl}
                 </a>
 
                 <a
-                  className="list-container-list-items"
+                  className="list-container-list-items2"
                   href={oneAddress.longUrl}
                   onClickCapture={() => {
                     this.handleClick(oneAddress._id);

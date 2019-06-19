@@ -9,12 +9,14 @@ export default class NotFound extends React.Component {
   // déclaration et export du composant
   // state propre au composant
   state = {
-    isLoading: true // gestion du chargement
+    isLoading: true, // gestion du chargement
+    notFound: false
   };
 
   async componentDidMount() {
     this.setState({
-      isLoading: false // le chargement a été fait
+      isLoading: false, // le chargement a été fait
+      notFound: true
     });
   }
 
@@ -22,7 +24,7 @@ export default class NotFound extends React.Component {
     if (this.state.isLoading) {
       //console.log("loading");
       // ce que l'on veut render avant le chargement
-      alert(`L'URL renseignée est invalide, essayez de nouveau :) `);
+      // alert(`L'URL renseignée est invalide, essayez de nouveau :) `);
 
       return null;
     }
@@ -30,7 +32,7 @@ export default class NotFound extends React.Component {
     // ce que l'on veut render avant le chargement
     return (
       <div className="app-container">
-        <HomePage />
+        <HomePage notFound={this.state.notFound} />
       </div>
     );
   }

@@ -32,7 +32,6 @@ export default class App extends React.Component {
         <Router>
           <Route exact path="/" component={HomePage} />
           <Route path="/error" component={NotFound} />
-
           <Route path="/:keyUrlParams" component={Redirect} />
         </Router>
       </div>

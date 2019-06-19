@@ -80,6 +80,11 @@ export default class Header extends React.Component {
               </button>
             </div>
           </form>
+          {this.props.notFound && (
+            <div>
+              L'URL demandée n'est pas valide, veuillez essayer de nouveau :)
+            </div>
+          )}
         </div>
       </div>
     );

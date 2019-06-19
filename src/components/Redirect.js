@@ -7,27 +7,31 @@ export default class Redirect extends React.Component {
   // state propre au composant
   state = {
     isLoading: true, // gestion du chargement
-    redirection: ""
+    redirection: null
   };
 
   async componentDidMount() {
     //permet de vérifier rapidement que le composant est bien appelé
     console.log("DidMount has been called from ", this.constructor.name);
 
-    const keyUrl = "roBMb";
-
+    const { keyUrl } = this.props.match.params;
+    const urlToRedirect = `http://short-url-server-mq.herokuapp.com/${keyUrl}`;
+    console.log(keyUrl);
+    console.log(urlToRedirect);
     try {
       const response = await axios.get(
-        `http://short-url-server-mq.herokuapp.com/:${keyUrl}`
+        `http://short-url-server-mq.herokuapp.com/${keyUrl}`
       );
       console.log("response.data", response.data);
+
       if (response) {
         this.setState({
-          redirection: `http://short-url-server-mq.herokuapp.com/:${keyUrl}`
+          redirection: urlToRedirect
         });
       }
     } catch (error) {
       this.setState({ error: error });
+      console.log("error");
     }
     console.log("hello", this.state.redirection);
   }
@@ -44,7 +48,6 @@ export default class Redirect extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      console.log("state", this.state.redirection);
       // ce que l'on veut render avant le chargement
       return null;
     }

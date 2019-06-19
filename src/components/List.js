@@ -1,6 +1,5 @@
 import React from "react";
 import "./List.css";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class List extends React.Component {

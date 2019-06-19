@@ -7,33 +7,26 @@ export default class Redirect extends React.Component {
   // state propre au composant
   state = {
     isLoading: true, // gestion du chargement
-    redirection: null
+    redirection: false,
+    keyUrl: ""
   };
 
   async componentDidMount() {
-    //permet de vérifier rapidement que le composant est bien appelé
-    console.log("DidMount has been called from ", this.constructor.name);
+    const { fromUrlKey } = this.props.match.params;
 
-    const { keyUrl } = this.props.match.params;
-    const urlToRedirect = `http://short-url-server-mq.herokuapp.com/${keyUrl}`;
-    console.log(keyUrl);
-    console.log(urlToRedirect);
-    try {
-      const response = await axios.get(
-        `http://short-url-server-mq.herokuapp.com/${keyUrl}`
-      );
-      console.log("response.data", response.data);
-
-      if (response) {
-        this.setState({
-          redirection: urlToRedirect
-        });
-      }
-    } catch (error) {
-      this.setState({ error: error });
-      console.log("error");
-    }
-    console.log("hello", this.state.redirection);
+    await axios
+      .get("https://short-url-server-mq.herokuapp.com/roBMb")
+      .then(response => {
+        console.log("response", response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    this.setState({
+      redirection: true,
+      isLoading: false
+    });
+    console.log(this.props.match);
   }
 
   // Gestion des événenemts :
@@ -47,6 +40,9 @@ export default class Redirect extends React.Component {
 } */
 
   render() {
+    const urlToRedirect = `http://short-url-server-mq.herokuapp.com/roBMb
+    `;
+    console.log(urlToRedirect);
     if (this.state.isLoading) {
       // ce que l'on veut render avant le chargement
       return null;
@@ -55,7 +51,7 @@ export default class Redirect extends React.Component {
     return (
       <div>
         {this.state.redirection
-          ? (window.location = this.state.redirection)
+          ? (window.location = urlToRedirect)
           : (window.location =
               "http://short-url-marie-quittelier.herokuapp.com/")}
       </div>

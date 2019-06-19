@@ -60,10 +60,7 @@ export default class Homepage extends React.Component {
     return (
       <div className="app-container">
         {(this.state.page === "welcome" || this.state.page === "result") && (
-          <Header
-            displayData={this.displayData}
-            notFound={this.props.notFound}
-          />
+          <Header displayData={this.displayData} />
         )}
 
         {<List address={this.state.address} />}

@@ -47,14 +47,8 @@ export default class Header extends React.Component {
     this.setState({ url: value });
   };
 
-  // Autres méthodes du composant :
-  /* doSomething = () => {
-  faire quelquechose d'autre
-} */
-
   render() {
     if (this.state.isLoading) {
-      //console.log("loading");
       // ce que l'on veut render avant le chargement
       return null;
     }
@@ -65,7 +59,6 @@ export default class Header extends React.Component {
         <div className="header-second-container">
           <h1 className="header-second-container-title">Simplify your links</h1>
           <form onSubmit={this.handleSubmit}>
-            {" "}
             <div className="header-second-container-form">
               <input
                 className="header-second-container-input"

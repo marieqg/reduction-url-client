@@ -19,7 +19,7 @@ export default class Redirect extends React.Component {
         console.log("response", response.data);
       })
       .catch(error => {
-        console.log(error);
+        alert("l'URL demandée n'est pas valide, merci de recommencer");
       });
     this.setState({
       redirection: true,
@@ -27,16 +27,6 @@ export default class Redirect extends React.Component {
       keyUrl: keyUrlParams
     });
   }
-
-  // Gestion des événenemts :
-  /* handleEvent = () => {
-  faire quelquechose
-} */
-
-  // Autres méthodes du composant :
-  /* doSomething = () => {
-  faire quelquechose d'autre
-} */
 
   render() {
     if (this.state.isLoading) {

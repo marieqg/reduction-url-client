@@ -29,6 +29,7 @@ export default class Homepage extends React.Component {
   }
 
   // Gestion des événenemts :
+  // permet de charger les données connues en base de données
   displayData = async () => {
     const response = await axios.get(
       "http://short-url-server-mq.herokuapp.com/"
@@ -44,13 +45,14 @@ export default class Homepage extends React.Component {
     }
   };
 
-  handleClick = async toto => {
+  // de gérer le click sur un url de la liste
+  handleClick = async url => {
     if (this.state.error !== null) {
       this.setState({ error: null });
     }
     try {
       await axios.post("http://short-url-server-mq.herokuapp.com/update", {
-        id: toto
+        id: url
       });
       axios.get("http://short-url-server-mq.herokuapp.com/").then(response => {
         this.setState({
@@ -65,7 +67,6 @@ export default class Homepage extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      //console.log("loading");
       // ce que l'on veut render avant le chargement
       return null;
     }

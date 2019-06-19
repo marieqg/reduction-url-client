@@ -15,24 +15,30 @@ export default class List extends React.Component {
   }
 
   render() {
+    const tabOfaddress = this.props.address;
+    let displayHeader = false;
+    if (tabOfaddress.length > 0) {
+      return (displayHeader = true);
+    }
+    // ce que l'on veut render avant le chargement
     if (this.state.isLoading) {
-      //console.log("loading");
-      // ce que l'on veut render avant le chargement
       return null;
     }
-    const tabOfaddress = this.props.address;
-    console.log(tabOfaddress);
     // ce que l'on veut render aprés le chargement
     return (
       <div className="list-container">
-        <div className="list-container-header">
-          <div className="list-container-header-part1">
-            <span className="list-container-header-title1">Original URL</span>
-            <span className="list-container-header-title2">Short URL</span>
-          </div>
+        {/* Le header ne s'affichera pas s'il n'y a rien dans la base de donnée   */}
+        {displayHeader && (
+          <div className="list-container-header">
+            <div className="list-container-header-part1">
+              <span className="list-container-header-title1">Original URL</span>
+              <span className="list-container-header-title2">Short URL</span>
+            </div>
 
-          <span className="list-container-header-title-visit">Visits</span>
-        </div>
+            <span className="list-container-header-title-visit">Visits</span>
+          </div>
+        )}
+        {/* Affichage de la liste des URLs connues en base de donnée  */}
 
         {tabOfaddress.map(oneAddress => {
           return (

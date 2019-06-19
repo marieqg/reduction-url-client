@@ -1,6 +1,8 @@
 import React from "react";
-import HomePage from "./components/Homepage";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import HomePage from "./components/Homepage";
+import Redirect from "./components/Redirect";
 
 export default class App extends React.Component {
   // déclaration et export du composant
@@ -28,6 +30,7 @@ export default class App extends React.Component {
         {/* <HomePage /> */}
         <Router>
           <Route exact path="/" component={HomePage} />
+          <Route path="/hello" component={Redirect} />
         </Router>
       </div>
     );

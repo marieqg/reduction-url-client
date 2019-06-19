@@ -1,6 +1,5 @@
 import React from "react";
 import "./List.css";
-import axios from "axios";
 
 export default class List extends React.Component {
   // déclaration et export du composant
@@ -14,26 +13,6 @@ export default class List extends React.Component {
       isLoading: false // le chargement a été fait
     });
   }
-
-  // Gestion des événenemts :
-  handleClick = async urlId => {
-    if (this.state.error !== null) {
-      this.setState({ error: null });
-    }
-    try {
-      await axios.post("http://short-url-server-mq.herokuapp.com/update", {
-        id: urlId
-      });
-      axios.get("http://short-url-server-mq.herokuapp.com/").then(response => {
-        this.setState({
-          address: response.data
-        });
-      });
-    } catch (error) {
-      this.setState({ error: error });
-      alert(this.state.error.response.data.error);
-    }
-  };
 
   render() {
     if (this.state.isLoading) {
@@ -70,10 +49,10 @@ export default class List extends React.Component {
                   className="list-container-list-items2"
                   href={oneAddress.longUrl}
                   onClickCapture={() => {
-                    this.handleClick(oneAddress._id);
+                    this.props.handleClick(oneAddress._id);
                   }}
                   onContextMenu={() => {
-                    this.handleClick(oneAddress._id);
+                    this.props.handleClick(oneAddress._id);
                   }}
                 >
                   {oneAddress.shortUrl}

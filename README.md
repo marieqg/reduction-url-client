@@ -13,8 +13,7 @@ Reduction URL  </h1
 
 ## 🚀 Quick start
 
-A.  **Start developing.**
-
+1.  **Start developing.**
 
 First, run the development server:
 
@@ -22,14 +21,14 @@ First, run the development server:
 npm start
 ```
 
-3.  **Open the source code and start editing!**
+2.  **Open the source code and start editing!**
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 **Final result :**
 
 
-![Final Result](https://gph.is/g/aKdGXW3)
+![Final Result](https://media.giphy.com/media/lFmDniklmRXStqA2Cv/giphy.gif)
 
 
 

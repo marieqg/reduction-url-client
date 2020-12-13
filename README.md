@@ -9,7 +9,8 @@ Reduction URL  </h1
 </p>
 
 
-<p>This is a projet made as a certification project. The live project is accessible [here] (http://short-url-marie-quittelier.herokuapp.com/). </p>
+<p>This is a projet made as a certification project. The live project is accessible [here](http://short-url-marie-quittelier.herokuapp.com/)
+. </p>
 
 ## 🚀 Quick start
 
